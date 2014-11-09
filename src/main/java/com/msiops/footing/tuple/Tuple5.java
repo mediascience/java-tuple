@@ -39,4 +39,30 @@ public final class Tuple5<T1, T2, T3, T4, T5> {
         this._5 = Objects.requireNonNull(t5);
     }
 
+    @Override
+    public boolean equals(final Object obj) {
+
+        final boolean rval;
+        if (obj == this) {
+            rval = true;
+        } else if (obj instanceof Tuple5) {
+            rval = this._1.equals(((Tuple5<?, ?, ?, ?, ?>) obj)._1)
+                    && this._2.equals(((Tuple5<?, ?, ?, ?, ?>) obj)._2)
+                    && this._3.equals(((Tuple5<?, ?, ?, ?, ?>) obj)._3)
+                    && this._4.equals(((Tuple5<?, ?, ?, ?, ?>) obj)._4)
+                    && this._5.equals(((Tuple5<?, ?, ?, ?, ?>) obj)._5);
+        } else {
+            rval = false;
+        }
+        return rval;
+
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(this._1, this._2, this._3, this._4, this._5);
+
+    }
+
 }
