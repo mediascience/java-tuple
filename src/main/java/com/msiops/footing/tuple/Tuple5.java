@@ -19,6 +19,8 @@ package com.msiops.footing.tuple;
 import java.util.Objects;
 import java.util.function.Function;
 
+import com.msiops.footing.functional.Fun5;
+
 public final class Tuple5<T1, T2, T3, T4, T5> {
 
     public final T1 _1;
@@ -101,6 +103,11 @@ public final class Tuple5<T1, T2, T3, T4, T5> {
             final Function<Tuple5<T1, T2, T3, T4, T5>, X> sel5) {
         return new Tuple5<>(sel1.apply(this), sel2.apply(this),
                 sel3.apply(this), sel4.apply(this), sel5.apply(this));
+    }
+
+    public <R> R spread(
+            final Fun5<? super T1, ? super T2, ? super T3, ? super T4, ? super T5, R> f) {
+        return f.apply(this._1, this._2, this._3, this._4, this._5);
     }
 
 }

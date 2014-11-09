@@ -19,6 +19,8 @@ package com.msiops.footing.tuple;
 import java.util.Objects;
 import java.util.function.Function;
 
+import com.msiops.footing.functional.Fun2;
+
 public final class Pair<T1, T2> {
 
     public final T1 _1;
@@ -88,6 +90,10 @@ public final class Pair<T1, T2> {
             final Function<Pair<T1, T2>, X> sel5) {
         return new Tuple5<>(sel1.apply(this), sel2.apply(this),
                 sel3.apply(this), sel4.apply(this), sel5.apply(this));
+    }
+
+    public <R> R spread(final Fun2<? super T1, ? super T2, R> f) {
+        return f.apply(this._1, this._2);
     }
 
 }

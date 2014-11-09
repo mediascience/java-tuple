@@ -21,6 +21,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.msiops.footing.functional.Fun2;
 import com.msiops.footing.tuple.Pair;
 import com.msiops.footing.tuple.Sel;
 import com.msiops.footing.tuple.Tuple;
@@ -35,6 +36,22 @@ public class Tuple2UsageTest {
     public void setup() {
         this.v1 = "Object";
         this.v2 = 7;
+    }
+
+    @Test
+    public void spreadTest() {
+
+        final String expected = new StringBuilder().append(this.v1)
+                .append(this.v2).toString();
+
+        final Fun2<Object, Integer, String> f = (t1, t2) -> {
+            return new StringBuilder().append(t1).append(t2).toString();
+        };
+
+        final String actual = Tuple.of(this.v1, this.v2).spread(f);
+
+        assertEquals(expected, actual);
+
     }
 
     @Test

@@ -23,6 +23,7 @@ import java.time.Instant;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.msiops.footing.functional.Fun5;
 import com.msiops.footing.tuple.Sel;
 import com.msiops.footing.tuple.Tuple;
 import com.msiops.footing.tuple.Tuple5;
@@ -46,6 +47,26 @@ public class Tuple5UsageTest {
         this.v3 = 3L;
         this.v4 = "String";
         this.v5 = Instant.now();
+    }
+
+    @Test
+    public void spreadTest() {
+
+        final String expected = new StringBuilder().append(this.v1)
+                .append(this.v2).append(this.v3).append(this.v4)
+                .append(this.v5).toString();
+
+        final Fun5<Object, Integer, Long, String, Instant, String> f = (t1, t2,
+                t3, t4, t5) -> {
+            return new StringBuilder().append(t1).append(t2).append(t3)
+                    .append(t4).append(t5).toString();
+        };
+
+        final String actual = Tuple.of(this.v1, this.v2, this.v3, this.v4,
+                this.v5).spread(f);
+
+        assertEquals(expected, actual);
+
     }
 
     @Test

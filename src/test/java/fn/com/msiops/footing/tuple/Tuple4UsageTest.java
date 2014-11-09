@@ -21,6 +21,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.msiops.footing.functional.Fun4;
 import com.msiops.footing.tuple.Sel;
 import com.msiops.footing.tuple.Tuple;
 import com.msiops.footing.tuple.Tuple4;
@@ -41,6 +42,24 @@ public class Tuple4UsageTest {
         this.v2 = 7;
         this.v3 = 3L;
         this.v4 = "String";
+    }
+
+    @Test
+    public void spreadTest() {
+
+        final String expected = new StringBuilder().append(this.v1)
+                .append(this.v2).append(this.v3).append(this.v4).toString();
+
+        final Fun4<Object, Integer, Long, String, String> f = (t1, t2, t3, t4) -> {
+            return new StringBuilder().append(t1).append(t2).append(t3)
+                    .append(t4).toString();
+        };
+
+        final String actual = Tuple.of(this.v1, this.v2, this.v3, this.v4)
+                .spread(f);
+
+        assertEquals(expected, actual);
+
     }
 
     @Test
