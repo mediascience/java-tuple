@@ -39,6 +39,9 @@ assert t5._2.longValue() == 200L;
 assert t5._3.equals("Something");
 assert t5._4.equals("Another");
 assert t5._5.equals(BigInteger.valueOf(15000));
+
+// degenerate case
+assert Tuple.of("The Thing").equals("The Thing");
 ```
 
 
