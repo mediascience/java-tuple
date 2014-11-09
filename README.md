@@ -1,6 +1,8 @@
 Tuples for Java
 ===============
 
+[![Build Status](https://travis-ci.org/mediascience/java-tuple.svg)](https://travis-ci.org/mediascience/java-tuple)
+
 Tuples mainly to support multi-value function
 return. Features include:
 
