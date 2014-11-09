@@ -16,16 +16,42 @@
  */
 package com.msiops.footing.tuple;
 
-public interface Tuple {
+public interface Sel {
 
-    static <T1, T2, T3> Tuple3<T1, T2, T3> of(final T1 t1, final T2 t2,
-            final T3 t3) {
-        return new Tuple3<>(t1, t2, t3);
+    static <T> T _1(final Tuple5<T, ?, ?, ?, ?> tup) {
+
+        return tup._1;
+
     }
 
-    static <T1, T2, T3, T4, T5> Tuple5<T1, T2, T3, T4, T5> of(final T1 t1,
-            final T2 t2, final T3 t3, final T4 t4, final T5 t5) {
-        return new Tuple5<>(t1, t2, t3, t4, t5);
+    static <T> T _2(final Tuple3<?, T, ?> tup) {
+
+        return tup._2;
+
+    }
+
+    static <T> T _2(final Tuple5<?, T, ?, ?, ?> tup) {
+
+        return tup._2;
+
+    }
+
+    static <T> T _3(final Tuple5<?, ?, T, ?, ?> tup) {
+
+        return tup._3;
+
+    }
+
+    static <T> T _4(final Tuple5<?, ?, ?, T, ?> tup) {
+
+        return tup._4;
+
+    }
+
+    static <T> T _5(final Tuple5<?, ?, ?, ?, T> tup) {
+
+        return tup._5;
+
     }
 
 }

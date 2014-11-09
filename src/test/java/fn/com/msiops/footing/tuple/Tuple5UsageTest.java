@@ -23,10 +23,11 @@ import java.time.Instant;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.msiops.footing.tuple.Sel;
 import com.msiops.footing.tuple.Tuple;
 import com.msiops.footing.tuple.Tuple5;
 
-public class UsageTest {
+public class Tuple5UsageTest {
 
     private Instant now;
 
@@ -36,7 +37,7 @@ public class UsageTest {
     }
 
     @Test
-    public void testConstruct5() {
+    public void testConstruct() {
 
         final Tuple5<Object, Integer, Long, String, Instant> t = Tuple.of(
                 "Object", 7, 3L, "String", this.now);
@@ -50,37 +51,55 @@ public class UsageTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void testConstruct5Null1stIllegal() {
+    public void testConstructNull1stIllegal() {
 
         Tuple.of(null, 7, 3L, "String", this.now);
 
     }
 
     @Test(expected = NullPointerException.class)
-    public void testConstruct5Null2ndIllegal() {
+    public void testConstructNull2ndIllegal() {
 
         Tuple.of("Object", null, 3L, "String", this.now);
 
     }
 
     @Test(expected = NullPointerException.class)
-    public void testConstruct5Null3rdIllegal() {
+    public void testConstructNull3rdIllegal() {
 
         Tuple.of("Object", 7, null, "String", this.now);
 
     }
 
     @Test(expected = NullPointerException.class)
-    public void testConstruct5Null4thIllegal() {
+    public void testConstructNull4thIllegal() {
 
         Tuple.of("Object", 7, 3L, null, this.now);
 
     }
 
     @Test(expected = NullPointerException.class)
-    public void testConstruct5Null5thIllegal() {
+    public void testConstructNull5thIllegal() {
 
         Tuple.of("Object", 7, 3L, "String", null);
+
+    }
+
+    @Test
+    public void testSlice1() {
+
+        assertEquals("String", Tuple.of("Object", 7, 3L, "String", this.now)
+                .slice(Sel::_4));
+
+    }
+
+    @Test
+    public void testSlice3() {
+
+        assertEquals(
+                Tuple.of(this.now, "Object", 3L),
+                Tuple.of("Object", 7, 3L, "String", this.now).slice(Sel::_5,
+                        Sel::_1, Sel::_3));
 
     }
 
