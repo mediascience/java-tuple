@@ -14,31 +14,29 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.msiops.footing.tuple;
+package fn.com.msiops.footing.tuple;
 
-public interface Tuple {
+import static org.junit.Assert.*;
 
-    static <T> T of(final T t) {
-        return t;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.msiops.footing.tuple.Tuple;
+
+public class DegenerateUsageTest {
+
+    private Object v1;
+
+    @Before
+    public void setup() {
+        this.v1 = "Object";
     }
 
-    static <T1, T2, T3> Pair<T1, T2> of(final T1 t1, final T2 t2) {
-        return new Pair<>(t1, t2);
-    }
+    @Test
+    public void testDegenerateTuple() {
 
-    static <T1, T2, T3> Triplet<T1, T2, T3> of(final T1 t1, final T2 t2,
-            final T3 t3) {
-        return new Triplet<>(t1, t2, t3);
-    }
+        assertEquals(this.v1, Tuple.of(this.v1));
 
-    static <T1, T2, T3, T4> Tuple4<T1, T2, T3, T4> of(final T1 t1, final T2 t2,
-            final T3 t3, final T4 t4) {
-        return new Tuple4<>(t1, t2, t3, t4);
-    }
-
-    static <T1, T2, T3, T4, T5> Tuple5<T1, T2, T3, T4, T5> of(final T1 t1,
-            final T2 t2, final T3 t3, final T4 t4, final T5 t5) {
-        return new Tuple5<>(t1, t2, t3, t4, t5);
     }
 
 }
