@@ -70,17 +70,17 @@ public final class Tuple5<T1, T2, T3, T4, T5> {
         return sel.apply(this);
     }
 
-    public <T, U> Tuple2<T, U> slice(
+    public <T, U> Pair<T, U> slice(
             final Function<Tuple5<T1, T2, T3, T4, T5>, T> sel1,
             final Function<Tuple5<T1, T2, T3, T4, T5>, U> sel2) {
-        return new Tuple2<>(sel1.apply(this), sel2.apply(this));
+        return new Pair<>(sel1.apply(this), sel2.apply(this));
     }
 
-    public <T, U, V> Tuple3<T, U, V> slice(
+    public <T, U, V> Triplet<T, U, V> slice(
             final Function<Tuple5<T1, T2, T3, T4, T5>, T> sel1,
             final Function<Tuple5<T1, T2, T3, T4, T5>, U> sel2,
             final Function<Tuple5<T1, T2, T3, T4, T5>, V> sel3) {
-        return new Tuple3<>(sel1.apply(this), sel2.apply(this),
+        return new Triplet<>(sel1.apply(this), sel2.apply(this),
                 sel3.apply(this));
     }
 

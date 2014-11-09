@@ -21,9 +21,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.msiops.footing.tuple.Pair;
 import com.msiops.footing.tuple.Sel;
 import com.msiops.footing.tuple.Tuple;
-import com.msiops.footing.tuple.Tuple2;
 
 public class Tuple2UsageTest {
 
@@ -40,7 +40,7 @@ public class Tuple2UsageTest {
     @Test
     public void testConstruct() {
 
-        final Tuple2<Object, Integer> t = Tuple.of(this.v1, this.v2);
+        final Pair<Object, Integer> t = Tuple.of(this.v1, this.v2);
 
         assertEquals(this.v1, t._1);
         assertEquals(this.v2, t._2);

@@ -25,14 +25,14 @@ import java.util.Collection;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.msiops.footing.tuple.Triplet;
 import com.msiops.footing.tuple.Tuple;
-import com.msiops.footing.tuple.Tuple3;
 
 public class Tuple3EqualityTest {
 
-    private Tuple3<?, ?, ?> control, equivalent;
+    private Triplet<?, ?, ?> control, equivalent;
 
-    private Collection<Tuple3<?, ?, ?>> diffs;
+    private Collection<Triplet<?, ?, ?>> diffs;
 
     private Object v1, v2, v3;
 
@@ -91,7 +91,7 @@ public class Tuple3EqualityTest {
 
     @Test
     public void testUnequal() {
-        for (final Tuple3<?, ?, ?> d : this.diffs) {
+        for (final Triplet<?, ?, ?> d : this.diffs) {
             assertFalse("{" + this.control + "} neq {" + d + "}",
                     this.control.equals(d));
             assertFalse("{" + d + "} neq {" + this.control + "}",

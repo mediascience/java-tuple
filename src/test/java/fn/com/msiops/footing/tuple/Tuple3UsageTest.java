@@ -22,8 +22,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.msiops.footing.tuple.Sel;
+import com.msiops.footing.tuple.Triplet;
 import com.msiops.footing.tuple.Tuple;
-import com.msiops.footing.tuple.Tuple3;
 
 public class Tuple3UsageTest {
 
@@ -43,7 +43,7 @@ public class Tuple3UsageTest {
     @Test
     public void testConstruct() {
 
-        final Tuple3<Object, Integer, Long> t = Tuple.of(this.v1, this.v2,
+        final Triplet<Object, Integer, Long> t = Tuple.of(this.v1, this.v2,
                 this.v3);
 
         assertEquals(this.v1, t._1);

@@ -25,14 +25,14 @@ import java.util.Collection;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.msiops.footing.tuple.Pair;
 import com.msiops.footing.tuple.Tuple;
-import com.msiops.footing.tuple.Tuple2;
 
 public class Tuple2EqualityTest {
 
-    private Tuple2<?, ?> control, equivalent;
+    private Pair<?, ?> control, equivalent;
 
-    private Collection<Tuple2<?, ?>> diffs;
+    private Collection<Pair<?, ?>> diffs;
 
     private Object v1, v2;
 
@@ -89,7 +89,7 @@ public class Tuple2EqualityTest {
 
     @Test
     public void testUnequal() {
-        for (final Tuple2<?, ?> d : this.diffs) {
+        for (final Pair<?, ?> d : this.diffs) {
             assertFalse("{" + this.control + "} neq {" + d + "}",
                     this.control.equals(d));
             assertFalse("{" + d + "} neq {" + this.control + "}",

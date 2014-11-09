@@ -18,13 +18,13 @@ package com.msiops.footing.tuple;
 
 public interface Sel {
 
-    static <T> T _1(final Tuple2<T, ?> tup) {
+    static <T> T _1(final Pair<T, ?> tup) {
 
         return tup._1;
 
     }
 
-    static <T> T _1(final Tuple3<T, ?, ?> tup) {
+    static <T> T _1(final Triplet<T, ?, ?> tup) {
 
         return tup._1;
 
@@ -42,13 +42,13 @@ public interface Sel {
 
     }
 
-    static <T> T _2(final Tuple2<?, T> tup) {
+    static <T> T _2(final Pair<?, T> tup) {
 
         return tup._2;
 
     }
 
-    static <T> T _2(final Tuple3<?, T, ?> tup) {
+    static <T> T _2(final Triplet<?, T, ?> tup) {
 
         return tup._2;
 
@@ -66,7 +66,7 @@ public interface Sel {
 
     }
 
-    static <T> T _3(final Tuple3<?, ?, T> tup) {
+    static <T> T _3(final Triplet<?, ?, T> tup) {
 
         return tup._3;
 
