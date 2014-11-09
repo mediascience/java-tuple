@@ -6,7 +6,7 @@ return. Features include:
 
 * arity to five
 * spread
-* slice ??
+* slice
 
 ## Usage
 
