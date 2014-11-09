@@ -18,9 +18,18 @@ package com.msiops.footing.tuple;
 
 public interface Tuple {
 
+    static <T1, T2, T3> Tuple2<T1, T2> of(final T1 t1, final T2 t2) {
+        return new Tuple2<>(t1, t2);
+    }
+
     static <T1, T2, T3> Tuple3<T1, T2, T3> of(final T1 t1, final T2 t2,
             final T3 t3) {
         return new Tuple3<>(t1, t2, t3);
+    }
+
+    static <T1, T2, T3, T4> Tuple4<T1, T2, T3, T4> of(final T1 t1, final T2 t2,
+            final T3 t3, final T4 t4) {
+        return new Tuple4<>(t1, t2, t3, t4);
     }
 
     static <T1, T2, T3, T4, T5> Tuple5<T1, T2, T3, T4, T5> of(final T1 t1,

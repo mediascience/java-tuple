@@ -18,16 +18,14 @@ package fn.com.msiops.footing.tuple;
 
 import static org.junit.Assert.*;
 
-import java.time.Instant;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import com.msiops.footing.tuple.Sel;
 import com.msiops.footing.tuple.Tuple;
-import com.msiops.footing.tuple.Tuple5;
+import com.msiops.footing.tuple.Tuple4;
 
-public class Tuple5UsageTest {
+public class Tuple4UsageTest {
 
     private Object v1;
 
@@ -37,73 +35,60 @@ public class Tuple5UsageTest {
 
     private String v4;
 
-    private Instant v5;
-
     @Before
     public void setup() {
         this.v1 = "Object";
         this.v2 = 7;
         this.v3 = 3L;
         this.v4 = "String";
-        this.v5 = Instant.now();
     }
 
     @Test
     public void testConstruct() {
 
-        final Tuple5<Object, Integer, Long, String, Instant> t = Tuple.of(
-                this.v1, this.v2, this.v3, this.v4, this.v5);
+        final Tuple4<Object, Integer, Long, String> t = Tuple.of(this.v1,
+                this.v2, this.v3, this.v4);
 
         assertEquals(this.v1, t._1);
         assertEquals(this.v2, t._2);
         assertEquals(this.v3, t._3);
         assertEquals(this.v4, t._4);
-        assertEquals(this.v5, t._5);
 
     }
 
     @Test(expected = NullPointerException.class)
     public void testConstructNull1stIllegal() {
 
-        Tuple.of(null, this.v2, this.v3, this.v4, this.v5);
+        Tuple.of(null, this.v2, this.v3, this.v4);
 
     }
 
     @Test(expected = NullPointerException.class)
     public void testConstructNull2ndIllegal() {
 
-        Tuple.of(this.v1, null, this.v3, this.v4, this.v5);
+        Tuple.of(this.v1, null, this.v3, this.v4);
 
     }
 
     @Test(expected = NullPointerException.class)
     public void testConstructNull3rdIllegal() {
 
-        Tuple.of(this.v1, this.v2, null, this.v4, this.v5);
+        Tuple.of(this.v1, this.v2, null, this.v4);
 
     }
 
     @Test(expected = NullPointerException.class)
     public void testConstructNull4thIllegal() {
 
-        Tuple.of(this.v1, this.v2, this.v3, null, this.v5);
-
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void testConstructNull5thIllegal() {
-
-        Tuple.of(this.v1, this.v2, this.v3, this.v4, null);
+        Tuple.of(this.v1, this.v2, this.v3, null);
 
     }
 
     @Test
     public void testSlice1() {
 
-        assertEquals(
-                this.v4,
-                Tuple.of(this.v1, this.v2, this.v3, this.v4, this.v5).slice(
-                        Sel::_4));
+        assertEquals(this.v4, Tuple.of(this.v1, this.v2, this.v3, this.v4)
+                .slice(Sel::_4));
 
     }
 
@@ -111,9 +96,9 @@ public class Tuple5UsageTest {
     public void testSlice2() {
 
         assertEquals(
-                Tuple.of(this.v5, this.v1),
-                Tuple.of(this.v1, this.v2, this.v3, this.v4, this.v5).slice(
-                        Sel::_5, Sel::_1));
+                Tuple.of(this.v2, this.v1),
+                Tuple.of(this.v1, this.v2, this.v3, this.v4).slice(Sel::_2,
+                        Sel::_1));
 
     }
 
@@ -121,9 +106,9 @@ public class Tuple5UsageTest {
     public void testSlice3() {
 
         assertEquals(
-                Tuple.of(this.v5, this.v1, this.v3),
-                Tuple.of(this.v1, this.v2, this.v3, this.v4, this.v5).slice(
-                        Sel::_5, Sel::_1, Sel::_3));
+                Tuple.of(this.v2, this.v1, this.v3),
+                Tuple.of(this.v1, this.v2, this.v3, this.v4).slice(Sel::_2,
+                        Sel::_1, Sel::_3));
 
     }
 
@@ -131,9 +116,9 @@ public class Tuple5UsageTest {
     public void testSlice4() {
 
         assertEquals(
-                Tuple.of(this.v5, this.v1, this.v3, this.v3),
-                Tuple.of(this.v1, this.v2, this.v3, this.v4, this.v5).slice(
-                        Sel::_5, Sel::_1, Sel::_3, Sel::_3));
+                Tuple.of(this.v1, this.v3, this.v3, this.v4),
+                Tuple.of(this.v1, this.v2, this.v3, this.v4).slice(Sel::_1,
+                        Sel::_3, Sel::_3, Sel::_4));
 
     }
 
@@ -141,9 +126,9 @@ public class Tuple5UsageTest {
     public void testSlice5() {
 
         assertEquals(
-                Tuple.of(this.v5, this.v1, this.v3, this.v3, this.v4),
-                Tuple.of(this.v1, this.v2, this.v3, this.v4, this.v5).slice(
-                        Sel::_5, Sel::_1, Sel::_3, Sel::_3, Sel::_4));
+                Tuple.of(this.v1, this.v3, this.v3, this.v4, this.v3),
+                Tuple.of(this.v1, this.v2, this.v3, this.v4).slice(Sel::_1,
+                        Sel::_3, Sel::_3, Sel::_4, Sel::_3));
 
     }
 

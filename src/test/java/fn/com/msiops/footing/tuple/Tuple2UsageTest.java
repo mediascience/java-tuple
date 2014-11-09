@@ -23,79 +23,64 @@ import org.junit.Test;
 
 import com.msiops.footing.tuple.Sel;
 import com.msiops.footing.tuple.Tuple;
-import com.msiops.footing.tuple.Tuple3;
+import com.msiops.footing.tuple.Tuple2;
 
-public class Tuple3UsageTest {
+public class Tuple2UsageTest {
 
     private Object v1;
 
     private Integer v2;
 
-    private Long v3;
-
     @Before
     public void setup() {
         this.v1 = "Object";
         this.v2 = 7;
-        this.v3 = 3L;
     }
 
     @Test
     public void testConstruct() {
 
-        final Tuple3<Object, Integer, Long> t = Tuple.of(this.v1, this.v2,
-                this.v3);
+        final Tuple2<Object, Integer> t = Tuple.of(this.v1, this.v2);
 
         assertEquals(this.v1, t._1);
         assertEquals(this.v2, t._2);
-        assertEquals(this.v3, t._3);
 
     }
 
     @Test(expected = NullPointerException.class)
     public void testConstructNull1stIllegal() {
 
-        Tuple.of(null, this.v2, this.v3);
+        Tuple.of(null, this.v2);
 
     }
 
     @Test(expected = NullPointerException.class)
     public void testConstructNull2ndIllegal() {
 
-        Tuple.of(this.v1, null, this.v3);
-
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void testConstructNull3rdIllegal() {
-
-        Tuple.of(this.v1, this.v2, null);
+        Tuple.of(this.v1, null);
 
     }
 
     @Test
     public void testSlice1() {
 
-        assertEquals(this.v2, Tuple.of(this.v1, this.v2, this.v3)
-                .slice(Sel::_2));
+        assertEquals(this.v2, Tuple.of(this.v1, this.v2).slice(Sel::_2));
 
     }
 
     @Test
     public void testSlice2() {
 
-        assertEquals(Tuple.of(this.v2, this.v1),
-                Tuple.of(this.v1, this.v2, this.v3).slice(Sel::_2, Sel::_1));
+        assertEquals(Tuple.of(this.v2, this.v1), Tuple.of(this.v1, this.v2)
+                .slice(Sel::_2, Sel::_1));
 
     }
 
     @Test
     public void testSlice3() {
 
-        assertEquals(
-                Tuple.of(this.v2, this.v1, this.v3),
-                Tuple.of(this.v1, this.v2, this.v3).slice(Sel::_2, Sel::_1,
-                        Sel::_3));
+        assertEquals(Tuple.of(this.v2, this.v1, this.v1),
+                Tuple.of(this.v1, this.v2).slice(Sel::_2, Sel::_1, Sel::_1));
 
     }
 
@@ -103,9 +88,9 @@ public class Tuple3UsageTest {
     public void testSlice4() {
 
         assertEquals(
-                Tuple.of(this.v1, this.v1, this.v3, this.v3),
-                Tuple.of(this.v1, this.v2, this.v3).slice(Sel::_1, Sel::_1,
-                        Sel::_3, Sel::_3));
+                Tuple.of(this.v1, this.v2, this.v1, this.v1),
+                Tuple.of(this.v1, this.v2).slice(Sel::_1, Sel::_2, Sel::_1,
+                        Sel::_1));
 
     }
 
@@ -113,9 +98,9 @@ public class Tuple3UsageTest {
     public void testSlice5() {
 
         assertEquals(
-                Tuple.of(this.v1, this.v1, this.v3, this.v3, this.v2),
-                Tuple.of(this.v1, this.v2, this.v3).slice(Sel::_1, Sel::_1,
-                        Sel::_3, Sel::_3, Sel::_2));
+                Tuple.of(this.v1, this.v2, this.v1, this.v1, this.v2),
+                Tuple.of(this.v1, this.v2).slice(Sel::_1, Sel::_2, Sel::_1,
+                        Sel::_1, Sel::_2));
 
     }
 

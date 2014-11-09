@@ -19,19 +19,16 @@ package com.msiops.footing.tuple;
 import java.util.Objects;
 import java.util.function.Function;
 
-public final class Tuple3<T1, T2, T3> {
+public final class Tuple2<T1, T2> {
 
     public final T1 _1;
 
     public final T2 _2;
 
-    public final T3 _3;
-
-    Tuple3(final T1 t1, final T2 t2, final T3 t3) {
+    Tuple2(final T1 t1, final T2 t2) {
         super();
         this._1 = Objects.requireNonNull(t1);
         this._2 = Objects.requireNonNull(t2);
-        this._3 = Objects.requireNonNull(t3);
     }
 
     @Override
@@ -40,10 +37,9 @@ public final class Tuple3<T1, T2, T3> {
         final boolean rval;
         if (obj == this) {
             rval = true;
-        } else if (obj instanceof Tuple3) {
-            rval = this._1.equals(((Tuple3<?, ?, ?>) obj)._1)
-                    && this._2.equals(((Tuple3<?, ?, ?>) obj)._2)
-                    && this._3.equals(((Tuple3<?, ?, ?>) obj)._3);
+        } else if (obj instanceof Tuple2) {
+            rval = this._1.equals(((Tuple2<?, ?>) obj)._1)
+                    && this._2.equals(((Tuple2<?, ?>) obj)._2);
         } else {
             rval = false;
         }
@@ -54,43 +50,42 @@ public final class Tuple3<T1, T2, T3> {
     @Override
     public int hashCode() {
 
-        return Objects.hash(this._1, this._2, this._3);
+        return Objects.hash(this._1, this._2);
 
     }
 
-    public <T> T slice(final Function<Tuple3<T1, T2, T3>, T> sel) {
+    public <T> T slice(final Function<Tuple2<T1, T2>, T> sel) {
         return sel.apply(this);
     }
 
-    public <T, U> Tuple2<T, U> slice(
-            final Function<Tuple3<T1, T2, T3>, T> sel1,
-            final Function<Tuple3<T1, T2, T3>, U> sel2) {
-        return new Tuple2<>(sel1.apply(this), sel2.apply(this));
-    }
-
     public <T, U, V> Tuple3<T, U, V> slice(
-            final Function<Tuple3<T1, T2, T3>, T> sel1,
-            final Function<Tuple3<T1, T2, T3>, U> sel2,
-            final Function<Tuple3<T1, T2, T3>, V> sel3) {
+            final Function<Tuple2<T1, T2>, T> sel1,
+            final Function<Tuple2<T1, T2>, U> sel2,
+            final Function<Tuple2<T1, T2>, V> sel3) {
         return new Tuple3<>(sel1.apply(this), sel2.apply(this),
                 sel3.apply(this));
     }
 
+    public <T, U> Tuple2<T, U> slice(final Function<Tuple2<T1, T2>, T> sel1,
+            final Function<Tuple2<T1, T2>, U> sel2) {
+        return new Tuple2<>(sel1.apply(this), sel2.apply(this));
+    }
+
     public <T, U, V, W> Tuple4<T, U, V, W> slice(
-            final Function<Tuple3<T1, T2, T3>, T> sel1,
-            final Function<Tuple3<T1, T2, T3>, U> sel2,
-            final Function<Tuple3<T1, T2, T3>, V> sel3,
-            final Function<Tuple3<T1, T2, T3>, W> sel4) {
+            final Function<Tuple2<T1, T2>, T> sel1,
+            final Function<Tuple2<T1, T2>, U> sel2,
+            final Function<Tuple2<T1, T2>, V> sel3,
+            final Function<Tuple2<T1, T2>, W> sel4) {
         return new Tuple4<>(sel1.apply(this), sel2.apply(this),
                 sel3.apply(this), sel4.apply(this));
     }
 
     public <T, U, V, W, X> Tuple5<T, U, V, W, X> slice(
-            final Function<Tuple3<T1, T2, T3>, T> sel1,
-            final Function<Tuple3<T1, T2, T3>, U> sel2,
-            final Function<Tuple3<T1, T2, T3>, V> sel3,
-            final Function<Tuple3<T1, T2, T3>, W> sel4,
-            final Function<Tuple3<T1, T2, T3>, X> sel5) {
+            final Function<Tuple2<T1, T2>, T> sel1,
+            final Function<Tuple2<T1, T2>, U> sel2,
+            final Function<Tuple2<T1, T2>, V> sel3,
+            final Function<Tuple2<T1, T2>, W> sel4,
+            final Function<Tuple2<T1, T2>, X> sel5) {
         return new Tuple5<>(sel1.apply(this), sel2.apply(this),
                 sel3.apply(this), sel4.apply(this), sel5.apply(this));
     }
