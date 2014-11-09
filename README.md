@@ -21,6 +21,48 @@ return. Features include:
 See [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%20%22com.msiops.footing%22%20a%3A%22footing-tuple%22) for latest version.
 
 
+### Construct
+
+```java
+final Pair<String, Integer> pair = Tuple.of("Hello", 7);
+assert pair._1.equals("Hello");
+assert pair._2.intValue() == 7;
+
+// max arity is 5
+final Tuple5<Integer, Long, String, Object, BigInteger> t5 = Tuple
+        .of(19, 200L, "Something", "Another",
+                BigInteger.valueOf(15000));
+assert t5._1.intValue() == 19;
+assert t5._2.longValue() == 200L;
+assert t5._3.equals("Something");
+assert t5._4.equals("Another");
+assert t5._5.equals(BigInteger.valueOf(15000));
+```
+
+
+### Slice
+
+```java
+// smaller
+assert Tuple.of("one", "two", "three").slice(Sel::_3, Sel::_1)
+        .equals(Tuple.of("three", "one"));
+
+// bigger
+assert Tuple.of("one", "two", "three")
+        .slice(Sel::_3, Sel::_1, Sel::_2, Sel::_2)
+        .equals(Tuple.of("three", "one", "two", "two"));
+```
+
+### Spread
+
+```java
+final Fun3<Integer, Integer, String, String> f = (i1, i2, l) -> (i1 + i2)
+        + " " + l;
+
+assert Tuple.of(7, 11, "Mice").spread(f).equals("18 Mice");
+```
+
+
 ## Versioning
 
 Releases in the 0.x series are the Wild West. Anything can change between
