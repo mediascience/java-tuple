@@ -40,7 +40,7 @@ assert t5._3.equals("Something");
 assert t5._4.equals("Another");
 assert t5._5.equals(BigInteger.valueOf(15000));
 
-// degenerate case
+// degenerate
 assert Tuple.of("The Thing").equals("The Thing");
 ```
 
@@ -49,13 +49,13 @@ assert Tuple.of("The Thing").equals("The Thing");
 
 ```java
 // smaller
-assert Tuple.of("one", "two", "three").slice(Sel::_3, Sel::_1)
-        .equals(Tuple.of("three", "one"));
+assert Tuple.of("one", 2, "three").slice(Sel::_3, Sel::_2)
+        .equals(Tuple.of("three", 2));
 
 // bigger
-assert Tuple.of("one", "two", "three")
+assert Tuple.of("one", 2, "three")
         .slice(Sel::_3, Sel::_1, Sel::_2, Sel::_2)
-        .equals(Tuple.of("three", "one", "two", "two"));
+        .equals(Tuple.of("three", "one", 2, 2));
 ```
 
 ### Spread

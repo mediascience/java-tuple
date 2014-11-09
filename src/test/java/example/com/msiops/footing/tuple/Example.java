@@ -62,13 +62,13 @@ assert Tuple.of("The Thing").equals("The Thing");
             // @formatter:off
             
 // smaller
-assert Tuple.of("one", "two", "three").slice(Sel::_3, Sel::_1)
-        .equals(Tuple.of("three", "one"));
+assert Tuple.of("one", 2, "three").slice(Sel::_3, Sel::_2)
+        .equals(Tuple.of("three", 2));
 
 // bigger
-assert Tuple.of("one", "two", "three")
+assert Tuple.of("one", 2, "three")
         .slice(Sel::_3, Sel::_1, Sel::_2, Sel::_2)
-        .equals(Tuple.of("three", "one", "two", "two"));
+        .equals(Tuple.of("three", "one", 2, 2));
 
             // @formatter:on
 
