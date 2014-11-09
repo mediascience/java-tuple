@@ -16,6 +16,8 @@
  */
 package com.msiops.footing.tuple;
 
+import java.util.Objects;
+
 public final class Tuple5<T1, T2, T3, T4, T5> {
 
     public final T1 _1;
@@ -30,11 +32,11 @@ public final class Tuple5<T1, T2, T3, T4, T5> {
 
     Tuple5(final T1 t1, final T2 t2, final T3 t3, final T4 t4, final T5 t5) {
         super();
-        this._1 = t1;
-        this._2 = t2;
-        this._3 = t3;
-        this._4 = t4;
-        this._5 = t5;
+        this._1 = Objects.requireNonNull(t1);
+        this._2 = Objects.requireNonNull(t2);
+        this._3 = Objects.requireNonNull(t3);
+        this._4 = Objects.requireNonNull(t4);
+        this._5 = Objects.requireNonNull(t5);
     }
 
 }
