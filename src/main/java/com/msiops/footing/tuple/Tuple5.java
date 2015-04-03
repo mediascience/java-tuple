@@ -109,4 +109,12 @@ public final class Tuple5<T1, T2, T3, T4, T5> {
         return f.apply(this._1, this._2, this._3, this._4, this._5);
     }
 
+    @Override
+    public String toString() {
+        return new StringBuilder().append('(').append(this._1).append(',')
+                .append(this._2).append(',').append(this._3).append(',')
+                .append(this._4).append(',').append(this._5).append(')')
+                .toString();
+    }
+
 }

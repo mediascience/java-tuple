@@ -120,4 +120,12 @@ public class Tuple2UsageTest {
 
     }
 
+    @Test
+    public void testToString() {
+
+        assertEquals("(" + this.v1 + "," + this.v2 + ")",
+                Tuple.of(this.v1, this.v2).toString());
+
+    }
+
 }

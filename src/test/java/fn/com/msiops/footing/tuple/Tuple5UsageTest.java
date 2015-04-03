@@ -167,4 +167,14 @@ public class Tuple5UsageTest {
 
     }
 
+    @Test
+    public void testToString() {
+
+        assertEquals("(" + this.v1 + "," + this.v2 + "," + this.v3 + ","
+                + this.v4 + "," + this.v5 + ")",
+                Tuple.of(this.v1, this.v2, this.v3, this.v4, this.v5)
+                        .toString());
+
+    }
+
 }

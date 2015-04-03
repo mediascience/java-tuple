@@ -136,4 +136,12 @@ public class Tuple3UsageTest {
 
     }
 
+    @Test
+    public void testToString() {
+
+        assertEquals("(" + this.v1 + "," + this.v2 + "," + this.v3 + ")", Tuple
+                .of(this.v1, this.v2, this.v3).toString());
+
+    }
+
 }

@@ -99,4 +99,11 @@ public final class Triplet<T1, T2, T3> {
         return f.apply(this._1, this._2, this._3);
     }
 
+    @Override
+    public String toString() {
+        return new StringBuilder().append('(').append(this._1).append(',')
+                .append(this._2).append(',').append(this._3).append(')')
+                .toString();
+    }
+
 }

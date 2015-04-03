@@ -95,4 +95,10 @@ public final class Pair<T1, T2> {
         return f.apply(this._1, this._2);
     }
 
+    @Override
+    public String toString() {
+        return new StringBuilder().append('(').append(this._1).append(',')
+                .append(this._2).append(')').toString();
+    }
+
 }
